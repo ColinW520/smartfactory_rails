@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140409022123) do
+ActiveRecord::Schema.define(version: 20140415005213) do
+
+  create_table "Frames", force: true do |t|
+    t.string   "name"
+    t.integer  "brand_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "Frames", ["brand_id"], name: "index_frames_on_brand_id"
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -29,7 +38,7 @@ ActiveRecord::Schema.define(version: 20140409022123) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "completed_on"
-    t.integer  "brand_id"
+    t.integer  "frame_id"
   end
 
 end

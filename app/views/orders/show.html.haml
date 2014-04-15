@@ -18,6 +18,9 @@
 %p
   %b Paid for on:
   = @order.paid_for_on
+%p
+  %b Frame:
+  = @order.frame.name
 
 = link_to 'Edit', edit_order_path(@order)
 \|

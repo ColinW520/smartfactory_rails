@@ -5,22 +5,24 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
+    @frames = Frame.all
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @frames = Frame.all
   end
 
   # GET /orders/new
   def new
     @order = Order.new
-    @brands = Brand.active
+    @frames = Frame.all
   end
 
   # GET /orders/1/edit
   def edit
-    @brands = Brand.all
+    @frames = Frame.all
   end
 
   # POST /orders
@@ -33,7 +35,7 @@ class OrdersController < ApplicationController
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render action: 'show', status: :created, location: @order }
       else
-        @brands = Brand.active
+        @frames = Frame.all
         format.html { render action: 'new' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
@@ -48,7 +50,7 @@ class OrdersController < ApplicationController
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { head :no_content }
       else
-        @brands = Brand.active
+        @frames = Frame.all
         format.html { render action: 'edit' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
@@ -85,6 +87,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:customer_name, :customer_email, :description, :price, :paid_for_on, :completed_on, :brand_id)
+      params.require(:order).permit(:customer_name, :customer_email, :description, :price, :paid_for_on, :completed_on, :frame_id)
     end
 end
