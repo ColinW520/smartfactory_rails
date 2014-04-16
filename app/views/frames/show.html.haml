@@ -1,11 +1,11 @@
 %p#notice= notice
 
 %p
-  %b Names:
+  %b Name:
   = @frame.name
 %p
   %b Brand:
-  = @frame.brand
+  = @frame.brand.name
 
 = link_to 'Edit', edit_frame_path(@frame)
 \|

@@ -4,6 +4,16 @@
   %b Name:
   = @brand.name
 
+%p
+  %b Paid but incomplete orders:
+  - if @brand.paid_but_incomplete_orders.any?
+    %ul
+      - @brand.orders.each do |order|
+        %li= link_to "Order #{order.id}", order_path(order)
+  - else
+  	No current orders.
+
+
 = link_to 'Edit', edit_brand_path(@brand)
 \|
 = link_to 'Back', brands_path

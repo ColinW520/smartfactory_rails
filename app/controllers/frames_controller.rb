@@ -1,4 +1,5 @@
 class FramesController < ApplicationController
+  before_action :set_brands, only: [:new, :edit, :create, :update]
   before_action :set_frame, only: [:show, :edit, :update, :destroy]
 
   # GET /frames
@@ -72,4 +73,9 @@ class FramesController < ApplicationController
     def frame_params
       params.require(:frame).permit(:name, :brand_id)
     end
+
+    def set_brands
+      @brands = Brand.active
+    end
+
 end

@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :set_frames, only: [:new, :edit, :create, :update]
   before_action :set_order, only: [:show, :edit, :update, :destroy, :mark_paid, :mark_completed]
 
   # GET /orders
@@ -89,4 +90,10 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:customer_name, :customer_email, :description, :price, :paid_for_on, :completed_on, :frame_id)
     end
+
+    def set_frames
+      # really, should be the frames for active brands
+      @frames = Frame.all
+    end
+
 end

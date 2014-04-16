@@ -4,7 +4,7 @@
   %tr
     %th Name
     %th Active?
-    %th
+    %th Open?
     %th
     %th
 
@@ -12,6 +12,7 @@
     %tr
       %td= brand.name
       %td= brand.active? ? 'Yes' : 'No'
+      %td= brand.paid_but_incomplete_orders.count
       %td= link_to 'Show', brand
       %td= link_to 'Edit', edit_brand_path(brand)
       %td= link_to 'Destroy', brand, :method => :delete, :data => { :confirm => 'Are you sure?' }

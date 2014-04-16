@@ -11,6 +11,6 @@
     = f.text_field :name
   .field
     = f.label :brand
-    = f.text_field :brand
+    = collection_select :frame, :brand_id, @brands, :id, :name, prompt: 'please select a brand for this frame'
   .actions
     = f.submit 'Save'

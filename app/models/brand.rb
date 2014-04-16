@@ -5,4 +5,8 @@ class Brand < ActiveRecord::Base
 
   scope :active, -> { where(active: true)}
 
+  def paid_but_incomplete_orders
+    orders.paid.unfinished
+  end  
+
 end
