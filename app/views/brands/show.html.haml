@@ -11,7 +11,7 @@
       - @brand.orders.each do |order|
         %li= link_to "Order #{order.id}", order_path(order)
   - else
-  	No current orders.
+  No current orders.
 
 
 = link_to 'Edit', edit_brand_path(@brand)
