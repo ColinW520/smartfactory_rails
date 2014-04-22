@@ -1,8 +1,6 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @brand.name
+%h1= @brand.name
 
 %p
   %b Paid but incomplete orders:
@@ -10,9 +8,9 @@
     %ul
       - @brand.orders.each do |order|
         %li= link_to "Order #{order.id}", order_path(order)
-  - else
-  No current orders.
 
+  - else
+    No current orders.
 
 = link_to 'Edit', edit_brand_path(@brand)
 \|
