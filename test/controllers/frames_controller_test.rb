@@ -2,7 +2,7 @@ require 'test_helper'
 
 class FramesControllerTest < ActionController::TestCase
   setup do
-    @frame = frames(:one)
+    @frame = FactoryGirl.create(:frame)
   end
 
   test "should get index" do
@@ -18,7 +18,7 @@ class FramesControllerTest < ActionController::TestCase
 
   test "should create frame" do
     assert_difference('Frame.count') do
-      post :create, frame: { brand_id: @frame.brand_id, names: @frame.names }
+      post :create, frame: { brand_id: @frame.brand_id, name: @frame.name }
     end
 
     assert_redirected_to frame_path(assigns(:frame))
@@ -35,7 +35,7 @@ class FramesControllerTest < ActionController::TestCase
   end
 
   test "should update frame" do
-    patch :update, id: @frame, frame: { brand_id: @frame.brand_id, names: @frame.names }
+    patch :update, id: @frame, frame: { brand_id: @frame.brand_id, name: @frame.name }
     assert_redirected_to frame_path(assigns(:frame))
   end
 

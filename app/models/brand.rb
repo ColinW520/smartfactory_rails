@@ -5,6 +5,10 @@ class Brand < ActiveRecord::Base
 
   scope :active, -> { where(active: true)}
 
+
+  #validations:
+  validates :name, presence: true
+
   def paid_but_incomplete_orders
     orders.paid.unfinished
   end  

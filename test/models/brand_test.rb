@@ -1,7 +1,13 @@
 require 'test_helper'
-
 class BrandTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+	test 'brand can save' do
+	  brand = FactoryGirl.build(:brand)
+	  assert brand.save
+	end
+
+	test 'brand requires name' do
+	  brand = FactoryGirl.build(:brand, name: nil)
+	  assert !brand.save, "Saved the brand without a name"
+	end
 end
