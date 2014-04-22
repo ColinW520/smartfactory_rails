@@ -61,6 +61,11 @@ class BrandsController < ApplicationController
     end
   end
 
+  def frames
+    @frames = Brand.find(params[:id]).frames.order(:name)
+    render '/frames/index'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_brand
@@ -71,4 +76,5 @@ class BrandsController < ApplicationController
     def brand_params
       params.require(:brand).permit(:name, :active)
     end
+
 end

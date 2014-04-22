@@ -1,13 +1,18 @@
 class Order < ActiveRecord::Base
 
+#associations################################
   belongs_to :frame
+  has_one :brand, through: :frame
 
+#validates###################################
   validates :customer_name, :customer_email, :description, :price, :frame_id, presence: true
   validate :completion_date_must_be_in_the_past
   validates :price, :numericality => {:only_integer => true}
 
+#scopes######################################
   scope :unfinished, -> { where(completed_on: nil) }
 
+#methods#####################################
   def self.paid
     where.not(paid_for_on: nil)
   end
@@ -20,6 +25,10 @@ class Order < ActiveRecord::Base
 
   def completion_date_must_be_in_the_past
     errors.add(:completed_on, 'should not be in the future.') if completed_on && completed_on > Time.now
+  end
+
+  def brand_id
+    brand ? brand.id : nil
   end
 
 end
