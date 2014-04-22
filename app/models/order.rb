@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
 
   validates :customer_name, :customer_email, :description, :price, :frame_id, presence: true
   validate :completion_date_must_be_in_the_past
+  validates :price, :numericality => {:only_integer => true}
 
   scope :unfinished, -> { where(completed_on: nil) }
 
