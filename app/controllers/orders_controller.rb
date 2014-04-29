@@ -90,7 +90,7 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:customer_name,
        :customer_email, :description,
-        :price, :paid_for_on, :completed_on, :frame_id)
+        :price, :frame_id)
     end
 
     def set_frames
