@@ -1,5 +1,21 @@
 class Order < ActiveRecord::Base
 
+#State Machine#####################
+include ActiveModel::Transitions
+state_machine do
+  state :new
+  state :paid
+  state :completed
+
+  event :pay, timestamp: :paid_for_on do
+    transitions :from => :new, :to => :paid
+  end
+
+  event :complete, timestamp: :completed_on do
+    transitions :from => :paid, :to => :completed
+  end
+end
+
 #associations################################
   belongs_to :frame
   has_one :brand, through: :frame
@@ -20,6 +36,7 @@ class Order < ActiveRecord::Base
   def self.unpaid
     where(paid_for_on: nil)
   end
+
 
   private
 

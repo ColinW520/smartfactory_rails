@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429000401) do
+ActiveRecord::Schema.define(version: 20140429014016) do
 
   create_table "Frames", force: true do |t|
     t.string   "name"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140429000401) do
     t.datetime "updated_at"
     t.datetime "completed_on"
     t.integer  "frame_id"
+    t.string   "state",          default: "new", null: false
   end
 
 end
