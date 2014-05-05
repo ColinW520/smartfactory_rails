@@ -69,13 +69,15 @@ header {
   right: 10px;
   a.new-order {
     vertical-align: top;
-    background: #187db1 url(../assets/sprite.png) no-repeat 83px 12px;
+    background: url(image-path('sprite.png')) no-repeat 8px -21px #ddd;
+     no-repeat 83px 12px;
     padding-right: 35px;
     color: #fff;
   }
   a.new-order:hover {
     color: #fff;
-    background: #0B4D70 url(../assets/sprite.png) no-repeat 83px 12px;
+    background: url(image-path('sprite.png')) no-repeat 8px -21px #ddd;
+    
   }
   ul {
     margin: 0;
